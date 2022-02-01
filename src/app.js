@@ -3,8 +3,8 @@ const hbs = require('hbs');
 const weather = require('./weather.js');
 const express = require('express');
 
-// const weatherData = require('./weather.js');
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname,'../public');
@@ -44,8 +44,6 @@ app.get('/help', (request,response) => {
 app.get('/weather',async (request,response) => {
     if(request.query.name){
         const data = await weather(request.query.name);
-        // console.log("\nThis is from app.js");
-        // console.log(data);
         response.send(data);
     }
     else {
@@ -53,6 +51,6 @@ app.get('/weather',async (request,response) => {
     }
 })
 
-app.listen(3000, () => {
-    console.log('Server is runing on port 3000');
+app.listen(port, () => {
+    console.log('Server is runing on port' + port);
 })

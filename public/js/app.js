@@ -21,7 +21,7 @@ weather.addEventListener('submit', (e) => {
             pressure.textContent = ''; 
         }
         else{
-        fetch(`http://localhost:3000/weather?name=${value}`)
+        fetch(`weather?name=${value}`)
             .then((response) => {
                 response.json()
                     .then((data) => {
